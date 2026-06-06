@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">闲鱼转发 - 发射端</string>
+    <string name="notification_listener_enable">请开启通知监听权限</string>
+    <string name="notification_listener_guide">需要授予通知监听权限才能采集闲鱼消息。\n\n请点击下方按钮，在系统设置中找到本应用并开启权限。</string>
+    <string name="open_settings">打开通知使用权设置</string>
+    <string name="server_config">服务器配置</string>
+    <string name="accessibility_description">读取闲鱼App对话框内容，用于提取消息文本</string>
+    <string name="server_host">服务器地址</string>
+    <string name="server_http_port">HTTP 端口</string>
+    <string name="server_ws_port">WebSocket 端口</string>
+    <string name="save">保存</string>
+    <string name="status_running">运行中</string>
+    <string name="status_stopped">未运行</string>
+</resources>

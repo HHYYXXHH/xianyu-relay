@@ -1,0 +1,29 @@
+# 闲鱼消息转发 - Docker Compose 部署
+# 用法: docker compose up -d
+# 注意: 此方式不包含闲鱼 API 客户端（需 xianyu-mcp Cookie），仅提供消息转发和规则管理
+
+services:
+  relay-server:
+    image: python:3.11-slim
+    container_name: relay-server
+    restart: always
+    ports:
+      - "9006:9006"
+      - "9007:9007"
+    volumes:
+      - ../relay_server:/app/relay_server:ro
+      - ../shared:/app/shared:ro
+      - relay_data:/app/data
+    working_dir: /app
+    environment:
+      - RELAY_PORT=9006
+      - RELAY_WS_PORT=9007
+      - RELAY_DATA_DIR=/app/data
+    command: >
+      bash -c "
+        pip install -q websockets Pillow pyyaml httpx &&
+        python -c 'import sys; sys.path.insert(0, \".\"); from relay_server.demo_server import main; main()'
+      "
+
+volumes:
+  relay_data:

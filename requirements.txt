@@ -1,0 +1,26 @@
+# 闲鱼消息转发系统 - 依赖清单
+
+# 图像处理（必选）
+Pillow>=10.0.0
+
+# OCR 引擎
+# 方案A: PaddleOCR（推荐，中文识别效果最佳，但需注意 PaddlePaddle 3.x Windows oneDNN 兼容性）
+# paddlepaddle>=3.0.0
+# paddleocr>=2.9.0
+
+# 方案B: Tesseract（轻量替代，需额外安装系统包）
+#   Windows: winget install UB-Mannheim.TesseractOCR
+#   中文包:  下载 chi_sim.traineddata 到 tessdata/ 目录
+#   https://github.com/tesseract-ocr/tessdata/raw/main/chi_sim.traineddata
+pytesseract>=0.3.10
+
+# HTTP 服务（可选，用于生产环境替换内置 http.server）
+# fastapi>=0.110.0
+# uvicorn>=0.29.0
+
+# WebSocket（可选，用于实时推送）
+# websockets>=12.0
+
+# 数据库（可选，用于替换 JSON 文件存储）
+# sqlalchemy>=2.0
+# aiosqlite>=0.20.0

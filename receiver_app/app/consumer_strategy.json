@@ -1,0 +1,9 @@
+{
+  "poll_interval_seconds": 2,
+  "max_cycles": null,
+  "fetch_timeout_seconds": 10,
+  "ack_timeout_seconds": 10,
+  "ack_retry_count": 2,
+  "ack_retry_delay_seconds": 0.5,
+  "stop_when_empty": false
+}

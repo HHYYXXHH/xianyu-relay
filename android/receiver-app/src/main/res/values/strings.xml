@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">闲鱼转发 - 接收端</string>
+    <string name="event_list">事件列表</string>
+    <string name="event_detail">事件详情</string>
+    <string name="mark_handled">标记已处理</string>
+    <string name="need_attention">需要人工处理</string>
+    <string name="connected">已连接</string>
+    <string name="disconnected">已断开</string>
+    <string name="no_events">暂无事件</string>
+    <string name="loading">加载中…</string>
+    <string name="channel_attention">需要关注的事件</string>
+    <string name="channel_attention_desc">OCR失败或上传失败时提醒</string>
+</resources>

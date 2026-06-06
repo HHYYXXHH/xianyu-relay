@@ -1,0 +1,7 @@
+# 闲鱼消息转发 - 服务器依赖
+# 在服务器上执行: pip install -r deploy/requirements-server.txt
+
+pyyaml>=6.0
+websockets>=12.0
+Pillow>=10.0.0
+httpx>=0.25.0

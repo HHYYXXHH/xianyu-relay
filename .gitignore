@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# 虚拟环境
+venv/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+
+# 数据文件
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+data/uploaded_images/*
+data/image_cache/*
+!data/uploaded_images/.gitkeep
+!data/image_cache/.gitkeep
+relay_server/data/
+
+# Android 构建
+android/.gradle/
+android/build/
+android/*/build/
+*.class
+*.apk
+*.aab
+
+# 临时文件
+tmp_*
+_deploy/
+
+# 密钥
+.env
+*.key
+*.pem
+
+# 系统文件
+Thumbs.db
+.DS_Store

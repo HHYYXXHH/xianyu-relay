@@ -1,0 +1,22 @@
+[Unit]
+Description=闲鱼消息转发 - 中转服务器
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/relay-server
+Environment="RELAY_PORT=9006"
+Environment="RELAY_WS_PORT=9007"
+Environment="RELAY_DATA_DIR=/opt/relay-server/data"
+ExecStart=/usr/bin/python3 -c "import sys; sys.path.insert(0, '.'); from relay_server.demo_server import main; main()"
+Restart=always
+RestartSec=5
+
+# 日志
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=relay-server
+
+[Install]
+WantedBy=multi-user.target

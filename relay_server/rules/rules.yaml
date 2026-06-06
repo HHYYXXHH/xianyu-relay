@@ -1,0 +1,170 @@
+products: {}
+global_rules:
+- trigger:
+  - 在吗
+  - 你好
+  - hi
+  - hello
+  - 在不在
+  reply: 在的，有什么可以帮您？直接说就行～
+  priority: normal
+- trigger:
+  - 怎么付款
+  - 转账
+  - 微信付款
+  - 支付宝付款
+  - 私下
+  reply: 仅支持闲鱼平台担保交易，不走私下转账，安全第一。
+  priority: must
+- trigger:
+  - 面交
+  - 见面
+  - 当面
+  - 自提
+  reply: 可以同城面交/自提，但必须走闲鱼下单，面交时当场确认收货。
+  priority: must
+- trigger:
+  - 还在吗
+  - 卖了吗
+  - 出了吗
+  - 下架
+  reply: 还在的，可以直接拍下。
+  priority: normal
+- trigger:
+  - 包邮
+  - 运费
+  reply: 标价不含运费，具体运费看地址。
+  priority: normal
+- trigger:
+  - 正品
+  - 真假
+  - 正版
+  - 是不是真的
+  reply: 正品保证，支持任何方式验货。假一赔三。
+  priority: must
+- trigger:
+  - 发票
+  - 收据
+  - 小票
+  reply: 个人闲置物品，不提供发票。
+  priority: normal
+llm_constraints:
+- 所有交易必须走闲鱼平台担保，绝不私下微信/支付宝转账
+- A商品保修3个月、B商品保修1年、C商品不保修 —— 绝对不允许超出范围承诺
+- 不得透露卖家的个人手机号、微信号、QQ号、详细地址
+- 不提前发货、不货到付款、不接受任何形式的定金/预付款
+- 如果买家要求私下交易或透露联系方式，礼貌但坚定地拒绝
+- 不评论其他卖家的商品或价格
+- 不确定的问题回复「这个问题我不太确定，等我确认后回复您」
+
+# ============================================================
+# 预设模板（新建商品时可选择套用，套用后可自由修改）
+# ============================================================
+templates:
+  # ---------- 电子产品 ----------
+  "电子产品":
+    description: "适用于手机、平板、笔记本、耳机等电子产品"
+    rules:
+      - trigger: [保修, 质保, 坏了, 有问题, 维修, 故障]
+        reply: "提供【请填写】个月保修，非人为损坏免费维修。"
+        priority: must
+      - trigger: [便宜, 优惠, 最低, 刀, 砍价, 少点]
+        reply: "价格已参考市场行情，诚心要可小刀。"
+        priority: normal
+      - trigger: [发货, 快递, 多久到, 物流, 几天]
+        reply: "【请填写发货时间】内发货，默认【请填写快递】，全国3-5天到。"
+        priority: normal
+      - trigger: [正品, 真假, 正版, 是不是真的, 翻新]
+        reply: "正品保证，支持任何方式验货，假一赔三。"
+        priority: must
+      - trigger: [发票, 收据, 小票]
+        reply: "个人闲置物品，不提供发票。"
+        priority: normal
+      - trigger: [配件, 充电器, 数据线, 盒子, 包装]
+        reply: "包含【请填写配件清单】，具体请看实拍图。"
+        priority: normal
+      - trigger: [电池, 续航, 能用多久]
+        reply: "电池健康度约【请填写】%，正常使用一天没问题。"
+        priority: normal
+
+  # ---------- 服装鞋包 ----------
+  "服装鞋包":
+    description: "适用于衣服、鞋子、包包、配饰等"
+    rules:
+      - trigger: [尺码, 大小, 多长, 尺寸, 合适]
+        reply: "具体尺码请看详情图，已标注实测尺寸。不确定是否合适可以先量一下自己的。"
+        priority: normal
+      - trigger: [颜色, 色差, 实物]
+        reply: "实拍图已尽量还原真实颜色，不同显示器可能有轻微色差，介意勿拍。"
+        priority: normal
+      - trigger: [瑕疵, 破损, 起球, 褪色, 污渍]
+        reply: "闲置物品难免使用痕迹，具体瑕疵已在详情图和描述中说明，请仔细查看。"
+        priority: must
+      - trigger: [便宜, 优惠, 最低, 刀, 砍价]
+        reply: "已经是底价了，不接刀哦～"
+        priority: must
+      - trigger: [发货, 快递, 多久到, 物流]
+        reply: "48小时内发货，默认【请填写快递】。"
+        priority: normal
+      - trigger: [正品, 真假, 品牌]
+        reply: "正品保证，支持专柜验货。"
+        priority: must
+      - trigger: [试穿, 退换, 不合适]
+        reply: "闲置物品售出不退不换，请确认好尺码再拍。"
+        priority: must
+
+  # ---------- 数码配件 ----------
+  "数码配件":
+    description: "适用于充电器、数据线、耳机、手机壳、贴膜等小件数码产品"
+    rules:
+      - trigger: [兼容, 支持, 能不能用, 适配]
+        reply: "请确认你的设备型号是否兼容，详情页有兼容列表。"
+        priority: normal
+      - trigger: [正品, 原装, 真假]
+        reply: "【请填写：原装正品 / 品牌正品 / 第三方配件】，具体看实拍。"
+        priority: must
+      - trigger: [便宜, 优惠, 最低, 刀, 砍价]
+        reply: "小件不议价，多买可包邮。"
+        priority: must
+      - trigger: [发货, 快递, 多久到, 物流]
+        reply: "当天16点前下单当天发，默认【请填写快递】。"
+        priority: normal
+
+  # ---------- 家居日用品 ----------
+  "家居日用品":
+    description: "适用于家具、家电、厨具、收纳、装饰等"
+    rules:
+      - trigger: [尺寸, 大小, 长宽高, 多少厘米]
+        reply: "尺寸已在详情图中标注，请确认好尺寸再拍。"
+        priority: normal
+      - trigger: [瑕疵, 磕碰, 划痕, 损坏]
+        reply: "闲置物品有使用痕迹，具体瑕疵已拍照说明，请仔细查看。"
+        priority: must
+      - trigger: [送货, 自提, 面交, 物流]
+        reply: "【请填写：支持自提 / 可发物流运费自理】，具体私聊沟通。"
+        priority: normal
+      - trigger: [便宜, 优惠, 最低, 刀, 砍价]
+        reply: "已是底价，不议价。"
+        priority: must
+
+  # ---------- 图书文具 ----------
+  "图书文具":
+    description: "适用于书籍、教材、文具、手账等"
+    rules:
+      - trigger: [正版, 盗版, 印刷, 质量]
+        reply: "正版书籍，印刷清晰，可拍内页实拍图确认。"
+        priority: must
+      - trigger: [笔记, 划线, 涂写, 品相]
+        reply: "书籍有【请填写：无笔记/少量笔记/较多笔记】，具体看实拍。"
+        priority: normal
+      - trigger: [包邮, 运费]
+        reply: "【请填写：包邮 / 满X元包邮 / 不包邮】，默认发【请填写快递】。"
+        priority: normal
+      - trigger: [便宜, 优惠, 最低, 刀, 砍价]
+        reply: "书籍不议价，谢谢理解。"
+        priority: must
+
+  # ---------- 空白模板 ----------
+  "空白模板":
+    description: "不预设任何规则，从零开始编辑"
+    rules: []
