@@ -10,7 +10,9 @@ from __future__ import annotations
 
 import asyncio
 import json
+import os
 import queue
+import sys
 import threading
 import time
 from typing import Any
@@ -18,8 +20,8 @@ from typing import Any
 import websockets
 from websockets.asyncio.server import ServerConnection
 
-HOST = "0.0.0.0"
-WS_PORT = 9007
+HOST = os.environ.get("RELAY_HOST", "0.0.0.0")
+WS_PORT = int(os.environ.get("RELAY_WS_PORT", "9007"))
 HEARTBEAT_INTERVAL = 30
 
 # 线程安全的状态
@@ -133,6 +135,11 @@ def _run_ws_server() -> None:
     asyncio.set_event_loop(loop)
     try:
         loop.run_until_complete(_serve())
+    except OSError as e:
+        print(f"[WS] 端口 {WS_PORT} 被占用，WebSocket 服务未能启动: {e}", file=sys.stderr)
+        print(f"[WS] HTTP 服务仍正常运行，可用环境变量 RELAY_WS_PORT 更换端口", file=sys.stderr)
+    except Exception as e:
+        print(f"[WS] 未知错误: {e}", file=sys.stderr)
     finally:
         loop.close()
 
